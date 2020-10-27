@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Diagnosis Description{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h1 class="text-center">Diagnosis Description</h1>
+            <div class="card border-success mb-3 text-center">
+                <div class="card-header">{{ object.patient }}</div>
+                <div class="card-body text-dark">
+                    <h5 class="card-title">{{ object.medical_diagnosis }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <b>First Name: </b>{{ object.patient.first_name }}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Last Name: </b>{{ object.patient.surname }}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Id Number: </b>{{ object.patient.id_number }}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Nursing Diagnosis: </b>{{ object.nursing_diagnosis }}
+                    </li>
+                    <li class="list-group-item">
+                        <b>Date: </b>{{ object.date }}
+                    </li>
+                    <li class="list-group-item">
+                        <b>By: </b>Mr./Mrs./Miss{{ object.by_specialist_nurse }}
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <p class="card-text">{{ object.description }}</p>
+                </div>
+                <div class="card-footer">
+                    {% if request.user.is_superuser %}
+                    <a href="{% url 'patient_edit' diagnosis.pk %}" 
+                       class="btn btn-success">Update</a>
+                    {% endif %}
+                    <a href="{% url 'patient_list' diagnosis.patient.pk %}" 
+                       class="btn btn-outline-success">All Felonies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!--**diagnosis**-->

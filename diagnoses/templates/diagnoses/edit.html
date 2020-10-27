@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Diagnosis{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h1>Edit Diagnosis Details</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form|crispy}}
+                <button class="btn btn-success mt-2" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
