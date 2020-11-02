@@ -17,7 +17,7 @@
                         <b>First Name: </b>{{ object.patient.first_name }}
                     </li>
                     <li class="list-group-item">
-                        <b>Last Name: </b>{{ object.patient.surname }}
+                        <b>surname: </b>{{ object.patient.surname }}
                     </li>
                     <li class="list-group-item">
                         <b>Id Number: </b>{{ object.patient.id_number }}
@@ -29,7 +29,7 @@
                         <b>Date: </b>{{ object.date }}
                     </li>
                     <li class="list-group-item">
-                        <b>By: </b>Mr./Mrs./Miss{{ object.by_specialist_nurse }}
+                        <b>By: Mr./Mrs./Miss</b>{{ object.by_specialist_nurse }}
                     </li>
                 </ul>
                 <div class="card-body">
@@ -37,11 +37,11 @@
                 </div>
                 <div class="card-footer">
                     {% if request.user.is_superuser %}
-                    <a href="{% url 'patient_edit' diagnosis.pk %}" 
+                    <a href="{% url 'diagnosis_edit' diagnosis.pk %}" 
                        class="btn btn-success">Update</a>
                     {% endif %}
-                    <a href="{% url 'patient_list' diagnosis.patient.pk %}" 
-                       class="btn btn-outline-success">All Felonies</a>
+                    <a href="{% url 'diagnosis_list' diagnosis.patient.pk %}" 
+                       class="btn btn-outline-success">All Diagnoses</a>
                 </div>
             </div>
         </div>

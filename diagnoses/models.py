@@ -1,7 +1,10 @@
-from django.db import models
 from django.urls import reverse
 from django.conf import settings
 from patient.models import Patient
+
+from django.db import models
+
+from datetime import datetime
 
 
 class Diagnosis(models.Model):
@@ -12,8 +15,9 @@ class Diagnosis(models.Model):
     description = models.TextField(verbose_name='Description')
     nursing_diagnosis = models.TextField(verbose_name='Nursing Diagnosis')
     by_specialist_nurse = models.CharField(
-        verbose_name='Name', default="", max_length=50)
-    date = models.DateTimeField(verbose_name='Date', auto_now_add=True)
+        verbose_name='By', default="", max_length=50)
+
+    date = models.DateField(verbose_name=' Date (YY-MM-DD)')
 
     def __str__(self):
         return self.medical_diagnosis

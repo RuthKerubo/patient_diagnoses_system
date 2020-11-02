@@ -24,6 +24,8 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('users/', include('django.contrib.auth.urls')),
     path('patient/', include('patient.urls')),
+    path('diagnoses/', include('diagnoses.urls')),
+    path('nurse/', include('nurse.urls')),
     path('', TemplateView.as_view(template_name='home.html'),
          name='home'),
 ]

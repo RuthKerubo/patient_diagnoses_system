@@ -22,10 +22,10 @@
                         {% if request.user.is_superuser %}
                         <a href="{% url 'patient_edit' patient.pk %}" 
                            class="btn btn-success">Update</a>
-                        <a href="{% url 'diagnoses_new' patient.pk %}" 
+                        <a href="{% url 'diagnosis_new' patient.pk %}" 
                           class="btn btn-success">+ Add Diagnosis</a>
                         {% endif %}
-                        <a href="{% url 'diagnoses_list' patient.pk %}" 
+                        <a href="{% url 'diagnosis_list' patient.pk %}" 
                            class="btn btn-success">All Diagnoses</a> 
                     </div>
                 </div>

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Patient{% endblock title %}
+{% block title %}Patients{% endblock title %}
 
 {% block content %}
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-sm-8">
-            <h1>Patient</h1>
-            <p>Click on a patient's ID Number so as to update his/her
-            details or add a diagnoses to him/her</p>
+            <h1>Patients</h1>
+            <p>Click on a patient's ID Number so as to view his/her
+            details</p>
             <table class="table table-bordered table-striped table-hover">
                 <thead class="thead-dark">
                     <tr>
@@ -21,12 +21,12 @@
                     {% for patient in object_list %}
                     <tr>
                         <td>
-                            <a href="{% url 'patient_detail' patient.id %}">
-                                {{ patient.id_number }}
-                           </a>
+                            <a href="{% url 'patient_detail' patient.patient.id %}">
+                                {{ patient.patient.id_number }}
+                            </a>
                         </td>
-                        <td>{{ patient.first_name }}</td>
-                        <td>{{ patient.surname }}</td>
+                        <td>{{ patient.patient.first_name }}</td>
+                        <td>{{ patient.patient.last_name }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -34,4 +34,4 @@
         </div>
     </div>
 </div>
-{% endblock content %} 
+{% endblock content %}

@@ -31,12 +31,14 @@ body{
                     {% if user.is_authenticated %}
                     {% if request.user.is_superuser %}
                     <li class="nav-item dropdown bg-dark">
-                        <a href="#" 
+                       <a href="#" 
                            class="nav-link dropdown-toggle " 
                            id="navbarDropdown" 
                            role="button" 
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Patient
+
+                       
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'patient_new' %}">
@@ -57,15 +59,12 @@ body{
                            id="navbarDropdown" 
                            role="button" 
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Lawyer Actions
+                            Nurse Actions
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'patient_new' %}">
-                                Add Clients
-                            </a>
-                            <div class="dropdown-divider"></div>
+                            
                             <a class="dropdown-item" href="{% url 'patient_list' %}">
-                                Clients List
+                                Patients List
                             </a>
                         </div>
                     </li>
@@ -98,16 +97,14 @@ body{
                     {% endif %}
                 </ul>
             </div>
+            
         </nav>
 
         {% block content %}
         {% endblock content %}
-        <footer class="py-3 bg-dark fixed-bottom">
-            <div class="footer navbar-fixed-bottom">
-                <p class="m-0 text-center text-white">@2019 Patient Diagnoses Management System</p>
-            </div>
-            <!-- /.container -->
-        </footer>
+      
+       
+     
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4\
 YfRvH+8abtTE1Pi6jizo"
@@ -124,5 +121,12 @@ js/bootstrap.min.js"
 integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ\
 6OW/JmZQ5stwEULTy"
 crossorigin="anonymous"></script>
+ 	<footer class="py-3 bg-dark container-fluid fixed-bottom ">
+            <div class="footer ">
+                <p class="m-0 text-center text-white">@2019 Patient Diagnoses Management System</p>
+            </div>
+           
+        </footer>
+	
     </body>
 </html>

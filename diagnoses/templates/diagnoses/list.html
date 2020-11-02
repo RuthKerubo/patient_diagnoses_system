@@ -19,12 +19,15 @@
                 <tbody>
                     {% for diagnosis in object_list %}
                     <tr>
+                        <td> {{ diagnosis.patient.id_number }}</td>
                         <td>
-                            <a href="{% url 'diagnosis_detail' diagnosis.id %}">
-                                {{ diagnosis.patient }}
-                            </a>
+                        
+                        <a href="{% url 'diagnosis_detail' diagnosis.id %}" >
+                        
+                        {{ diagnosis.medical_diagnosis }}
+                        
+                        </a>
                         </td>
-                        <td>{{ diagnosis.medical_diagnosis }}</td>
                         <td>{{ diagnosis.date }}</td>
                         <td>{{ diagnosis.by_specialist_nurse }}</td>
                     </tr>

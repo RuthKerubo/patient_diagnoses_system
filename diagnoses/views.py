@@ -12,6 +12,8 @@ from django.urls import reverse_lazy
 from .models import Diagnosis
 from patient.models import Patient
 
+from django import forms
+
 
 class DiagnosisListView(LoginRequiredMixin, ListView):
     model = Diagnosis
@@ -53,8 +55,8 @@ class DiagnosisUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class DiagnosisCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Diagnosis
-    fields = ('patient', 'medical_diagnosis',
-              'description', 'date', 'by_specialist_nurse')
+    fields = ('patient', 'medical_diagnosis', 'description',
+              'date', 'by_specialist_nurse')
     template_name = 'diagnoses/new.html'
     login_url = 'login'
 
