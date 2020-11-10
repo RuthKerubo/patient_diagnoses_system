@@ -1,4 +1,8 @@
-from django.urls import path
+from django.urls import include, path
+
+from rest_framework import routers
+
+from . import views
 
 from .views import (
     DiagnosisListView,
@@ -7,8 +11,12 @@ from .views import (
     DiagnosisCreateView
 )
 
+router = routers.DefaultRouter()
+router.register(r'diagnoses', views.DiagnosisViewSet)
+
 
 urlpatterns = [
+
     path('list/<int:patient_pk>/',
          DiagnosisListView.as_view(), name='diagnosis_list'),
     path('<int:pk>/edit/',
@@ -17,4 +25,9 @@ urlpatterns = [
          DiagnosisDetailView.as_view(), name='diagnosis_detail'),
     path('new/<int:patient_pk>/',
          DiagnosisCreateView.as_view(), name='diagnosis_new'),
+
+    path('', include(router.urls)),
+
+    path('api-auth/', include('rest_framework.urls',
+                              namespace='re      st_framework')),
 ]

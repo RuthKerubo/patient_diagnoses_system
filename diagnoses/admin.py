@@ -4,7 +4,7 @@ from .models import Diagnosis
 
 class DiagnosisAdmin(admin.ModelAdmin):
     model = Diagnosis
-    list_display = ['patient', 'medical_diagnosis', 'description',
+    list_display = ['medical_diagnosis', 'description',
                     'nursing_diagnosis', 'date', 'by_specialist_nurse', ]
 
 

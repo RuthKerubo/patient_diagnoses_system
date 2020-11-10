@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     # 3rd Party
     'crispy_forms',
     # 'semanticuiform',
+
+    'rest_framework',
+
     'bootstrap_datepicker_plus',
 ]
 

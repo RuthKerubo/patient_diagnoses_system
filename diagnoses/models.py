@@ -17,7 +17,8 @@ class Diagnosis(models.Model):
     by_specialist_nurse = models.CharField(
         verbose_name='By', default="", max_length=50)
 
-    date = models.DateField(verbose_name=' Date (YY-MM-DD)')
+    date = models.DateTimeField(
+        verbose_name=' Date (YY-MM-DD)')
 
     def __str__(self):
         return self.medical_diagnosis

@@ -14,6 +14,10 @@ from patient.models import Patient
 
 from django import forms
 
+from rest_framework import viewsets
+
+from .serializers import DiagnosisSerializer
+
 
 class DiagnosisListView(LoginRequiredMixin, ListView):
     model = Diagnosis
@@ -86,4 +90,9 @@ class DiagnosisCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         form = super(DiagnosisCreateView, self).get_form()
 
         return form
+
+
+class DiagnosisViewSet(viewsets.ModelViewSet):
+    queryset = Diagnosis.objects.all().order_by('patient')
+    serializer_class = DiagnosisSerializer
 # Create your views here.

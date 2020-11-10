@@ -12,9 +12,15 @@ class Patient(models.Model):
     surname = models.CharField(verbose_name="Surname", max_length=50)
     id_number = models.CharField(
         verbose_name="Id Number", max_length=50, unique=True)
+    
+    class Meta:
+        ordering = ['id_number']
+        
+    def __str__(self):
+        return self.id_number
 
-    def _str_(self):
-        return "{} - {} {}".format(self.id_number, self.first_name, self.surname)
+    #def _str_(self):
+     #   return "{} - {} {}".format(self.id_number, self.first_name, self.surname)
 
     def get_absolute_url(self):
         return reverse('patient_detail', args=[str(self.id)])

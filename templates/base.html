@@ -5,7 +5,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,
                                                           initial-scale=1, shrink-to-fit=no">
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'external/bootstrap/css/bootstrap.min.css' %}">
+
+        <!-- Site CSS -->
+        <!--
+            <link rel="stylesheet" href="/static/css/stylesheet.css">
+        -->
+
+        <!-- Font Awesome -->
+        <script defer
+                src="{% static 'external/fontawesome-free-5.11.2-web/js/solid.js' %}"></script>
+        <script defer
+                src="{% static 'external/fontawesome-free-5.11.2-web/js/fontawesome.js' %}">
+        </script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'external/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'external/popper.min.js' %}"></script>
+        <script src="{% static 'external/bootstrap/js/bootstrap.min.js' %}"></script>
+           
         <title>{% block title %}PDMS{% endblock title %}</title>
 
         <style>
@@ -37,8 +56,6 @@ body{
                            role="button" 
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Patient
-
-                       
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'patient_new' %}">
@@ -50,8 +67,35 @@ body{
                             </a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown bg-dark">
+                       <a href="#" 
+                           class="nav-link dropdown-toggle " 
+                           id="navbarDropdown" 
+                           role="button" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Specialist
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'specialist_new' %}">
+                                Register Specialist
+                            </a>
+                        </div>
                     </li>
+                    <li class="nav-item dropdown bg-dark">
+                       <a href="#" 
+                           class="nav-link dropdown-toggle " 
+                           id="navbarDropdown" 
+                           role="button" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Nurse
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'nurse_new' %}">
+                                Register Nurse 
+                            </a>
+                        </div>
+                    </li>
+                    
                     {% else %}
                     <li class="nav-item dropdown bg-dark">
                         <a href="#" 
@@ -62,8 +106,29 @@ body{
                             Nurse Actions
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
-                            <a class="dropdown-item" href="{% url 'patient_list' %}">
+                            <a class="dropdown-item" href="{% url 'nursepatient_new' %}">
+                                Add Patient
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'nursepatients_list' %}">
+                                Patients List
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown bg-dark">
+                        <a href="#" 
+                           class="nav-link dropdown-toggle " 
+                           id="navbarDropdown" 
+                           role="button" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Specialist Actions
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'specialistpatient_new' %}">
+                                Add Patient
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'specialistpatients_list' %}">
                                 Patients List
                             </a>
                         </div>
@@ -71,11 +136,12 @@ body{
                    
                     {% endif %}
                     <li class="nav-item dropleft">
-                        <button class="nav-link btn btn-outline-secondary dropdown-toggle " 
+                    <button class="nav-link btn btn-outline-secondary dropdown-toggle " 
                                 id="navbarDropdown" 
                                 role="button" 
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ user.last_name }}
+                        
+                            {{ user.surname }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'password_change' %}">
@@ -86,7 +152,7 @@ body{
                                 Log Out
                             </a>
                         </div>
-                    </li>
+                      </li>
                     {% else %}
                     <li class="nav-item mr-1">
                         <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
@@ -103,24 +169,6 @@ body{
         {% block content %}
         {% endblock content %}
       
-       
-     
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4\
-YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/\
-1.14.3/
-umd/popper.min.js"
-integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbB\
-JiSnjAK/
-l8WvCWPIPm49"
-crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/\
-js/bootstrap.min.js"
-integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ\
-6OW/JmZQ5stwEULTy"
-crossorigin="anonymous"></script>
  	<footer class="py-3 bg-dark container-fluid fixed-bottom ">
             <div class="footer ">
                 <p class="m-0 text-center text-white">@2019 Patient Diagnoses Management System</p>
