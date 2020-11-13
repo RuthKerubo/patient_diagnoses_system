@@ -14,6 +14,7 @@
         -->
 
         <!-- Font Awesome -->
+        
         <script defer
                 src="{% static 'external/fontawesome-free-5.11.2-web/js/solid.js' %}"></script>
         <script defer
@@ -29,8 +30,24 @@
 
         <style>
 body{
+
+background: url("/static/images/bg.jpg") no-repeat fixed;
+	background-size: 100% 100%;	
+
 }
-        </style>
+
+ .zoom{
+    
+    transform-origin: 50% 50%;
+    transition: transform 20s linear;
+ }
+
+ .zoom:hover{    
+    transform: scale(2) rotate(0.1deg);
+ }
+
+
+     </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -176,5 +193,9 @@ body{
            
         </footer>
 	
+
     </body>
 </html>
+
+<!--background: url("/static/images/medical.jpg") no-repeat fixed;
+	background-size: auto; -->
