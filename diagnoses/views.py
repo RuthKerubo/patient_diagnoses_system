@@ -3,16 +3,26 @@ from django.contrib.auth.mixins import (
     UserPassesTestMixin
 )
 from django.shortcuts import get_object_or_404
+
 from django.views.generic import ListView, DetailView
+
 from django.views.generic.edit import CreateView, UpdateView
 
 from bootstrap_datepicker_plus import DatePickerInput
+
 from django.urls import reverse_lazy
 
 from .models import Diagnosis
+
 from patient.models import Patient
 
 from django import forms
+
+from django.http import JsonResponse
+
+from django.shortcuts import render
+
+from django.core import serializers
 
 from rest_framework import viewsets
 
@@ -49,7 +59,7 @@ class DiagnosisDetailView(LoginRequiredMixin, DetailView):
 class DiagnosisUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Diagnosis
     fields = ('medical_diagnosis', 'description',
-              'nursing_diagnosis', 'by_specialist_nurse', 'date')
+              'nursing_diagnosis','date')
     template_name = 'diagnoses/edit.html'
     login_url = 'login'
 
@@ -60,7 +70,7 @@ class DiagnosisUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class DiagnosisCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Diagnosis
     fields = ('patient', 'medical_diagnosis', 'description',
-              'date', 'by_specialist_nurse')
+              'date')
     template_name = 'diagnoses/new.html'
     login_url = 'login'
 
@@ -92,7 +102,20 @@ class DiagnosisCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return form
 
 
+
+
+def pivot_data(request):
+    dataset = Diagnosis.objects.all()
+    data = serializers.serialize('json', dataset)
+    return JsonResponse(data, safe=False)
+
+
+def dashboard_with_pivot(request):
+    return render(request, 'diagnoses/dashboard_with_pivot.html', {})
+    
 class DiagnosisViewSet(viewsets.ModelViewSet):
     queryset = Diagnosis.objects.all().order_by('patient')
     serializer_class = DiagnosisSerializer
+        
+    
 # Create your views here.

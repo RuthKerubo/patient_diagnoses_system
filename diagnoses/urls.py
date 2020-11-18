@@ -25,9 +25,12 @@ urlpatterns = [
          DiagnosisDetailView.as_view(), name='diagnosis_detail'),
     path('new/<int:patient_pk>/',
          DiagnosisCreateView.as_view(), name='diagnosis_new'),
-
+    
+    path('dashboard/', views.dashboard_with_pivot, name='dashboard_with_pivot'),
+    
+    path('data', views.pivot_data, name='pivot_data'),        
+    
     path('', include(router.urls)),
 
-    path('api-auth/', include('rest_framework.urls',
-                              namespace='re      st_framework')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),                  
 ]
