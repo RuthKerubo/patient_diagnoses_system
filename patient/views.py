@@ -16,7 +16,7 @@ from .models import Patient
 
 class PatientListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Patient
-    ordering = ['id_number', 'first_name', 'surname']
+    ordering = ['user']
     template_name = 'patient/list.html'
     login_url = 'login'
 
@@ -32,7 +32,7 @@ class PatientDetailView(LoginRequiredMixin, DetailView):
 
 class PatientUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Patient
-    fields = ('id_number', 'first_name', 'surname')
+    fields = ('user',)
     template_name = 'patient/edit.html'
     login_url = 'login'
 
@@ -42,7 +42,7 @@ class PatientUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PatientCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Patient
-    fields = ('id_number', 'first_name', 'surname')
+    fields = ('user',)
     template_name = 'patient/new.html'
     login_url = 'login'
 

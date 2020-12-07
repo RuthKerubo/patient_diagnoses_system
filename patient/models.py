@@ -8,20 +8,30 @@ from django.urls import reverse
 
 
 class Patient(models.Model):
-    first_name = models.CharField(verbose_name="Firstname", max_length=50)
-    surname = models.CharField(verbose_name="Surname", max_length=50)
-    id_number = models.CharField(
-        verbose_name="Id Number", max_length=50, unique=True)
+    user = models.OneToOneField(
+        get_user_model(),
+        default='',
+        on_delete=models.CASCADE
+
+    )
+   # patient_id = models.CharField(verbose_name="Patient Id", max_length=50, unique=True, default='')
+
     
+
     class Meta:
-        ordering = ['id_number']
+        ordering = ['user__id_no']
         
     def __str__(self):
-        return self.id_number
+        return self.user.id_no
+
+    def __str__(self):
+        return "{} <{}>".format(self.user.get_full_name(), self.user.email)    
 
     #def _str_(self):
-     #   return "{} - {} {}".format(self.id_number, self.first_name, self.surname)
+    #   return "{} - {} {}".format(self.patient_id)
 
     def get_absolute_url(self):
         return reverse('patient_detail', args=[str(self.id)])
+
+
 # Create your models here.

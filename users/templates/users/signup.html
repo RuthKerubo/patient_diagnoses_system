@@ -1,21 +1,32 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block title %}Sign Up{% endblock title %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-sm-5">
-             <h2>Sign Up</h2>
-             <form method="post">
-                 {% csrf_token %}
-                 {{ form|crispy}}
-                <button class="btn btn-success mt-2" type="submit">Sign Up</button>
+
+<div class="container p-3 my-3">
+    <div class="row">
+    	<div class="col-6">
+    	<div class="img-place w-lg-75 zoom">
+        <img class="img-thumbnail" src="{% static 'images\signup.jpg' %}">
+        </div>
+        </div>
+        <div class="col-4">
+            <h1>Sign Up</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary mt-2" type="submit">Sign Up</button>
             </form>
         </div>
+        
     </div>
 </div>
+
+
 {% endblock content %}
 

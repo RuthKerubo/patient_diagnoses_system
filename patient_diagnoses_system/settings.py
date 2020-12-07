@@ -49,12 +49,23 @@ INSTALLED_APPS = [
 
     # 3rd Party
     'crispy_forms',
+
+    
     # 'semanticuiform',
 
     'rest_framework',
 
     'bootstrap_datepicker_plus',
+
+    
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

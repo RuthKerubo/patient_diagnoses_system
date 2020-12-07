@@ -5,6 +5,7 @@ from .views import(
     PatientCreateView,
     PatientDetailView,
     PatientUpdateView,
+
 )
 
 
@@ -21,6 +22,7 @@ urlpatterns = [
     path('<int:pk>/edit/',
          PatientUpdateView.as_view(),
          name='patient_edit'),
+
    
     
     

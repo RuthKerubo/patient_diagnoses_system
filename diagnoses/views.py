@@ -28,6 +28,7 @@ from rest_framework import viewsets
 
 from .serializers import DiagnosisSerializer
 
+from rest_framework.permissions import IsAuthenticated 
 
 class DiagnosisListView(LoginRequiredMixin, ListView):
     model = Diagnosis
@@ -114,6 +115,7 @@ def dashboard_with_pivot(request):
     return render(request, 'diagnoses/dashboard_with_pivot.html', {})
     
 class DiagnosisViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,) 
     queryset = Diagnosis.objects.all().order_by('patient')
     serializer_class = DiagnosisSerializer
         

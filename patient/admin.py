@@ -5,8 +5,10 @@ from .models import Patient
 
 class PatientAdmin(admin.ModelAdmin):
     model = Patient
-    list_display = ['first_name', 'surname', 'id_number', ]
+    list_display = ['user']
 
 
 admin.site.register(Patient, PatientAdmin)
+   
+
 # Register your models here.

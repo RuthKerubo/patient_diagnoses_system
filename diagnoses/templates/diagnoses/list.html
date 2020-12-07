@@ -13,13 +13,13 @@
                         <th scope="col">Patient</th>
                         <th scope="col">Medical Diagnosis</th>
                         <th scope="col">Date</th>
-                        <th scope="col">By</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
                     {% for diagnosis in object_list %}
                     <tr>
-                        <td> {{ diagnosis.patient.id_number }}</td>
+                        <td> {{ diagnosis.patient.user.id_no }}</td>
                         <td>
                         
                         <a href="{% url 'diagnosis_detail' diagnosis.id %}" >
@@ -29,7 +29,6 @@
                         </a>
                         </td>
                         <td>{{ diagnosis.date }}</td>
-                        <td>{{ diagnosis.by_specialist_nurse }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

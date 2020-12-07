@@ -17,6 +17,12 @@
                     <li class="list-group-item"><b>Surname: </b>{{ object.user.surname }}</li>
                     <li class="list-group-item"><b>Id Number: </b>{{ object.user.id_no }}</li>
                 </ul>
+                <div class="card-body">
+                    <div class="btn-group" role="group" aria-label="CRUD Buttons">
+                    <a href="{% url 'diagnosis_list' patient.pk %}" 
+                    class="btn btn-success">All Diagnoses</a> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
